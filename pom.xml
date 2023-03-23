@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.0.4</version>
+    </parent>
+
+    <groupId>io.github.yanfeiwuji</groupId>
+    <artifactId>rsql-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>rsql-parent</name>
+    <description>rsql-parent</description>
+    <modules>
+        <module>rsql-common</module>
+        <module>rsql-mybatis-plus</module>
+    </modules>
+    <properties>
+        <java.version>17</java.version>
+        <mybatis.plus.v>3.5.2</mybatis.plus.v>
+        <spring.boot.v>3.0.4</spring.boot.v>
+        <yfwj.rsql.v>0.0.1-SNAPSHOT</yfwj.rsql.v>
+    </properties>
+
+    <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/cz.jirutka.rsql/rsql-parser -->
+        <dependency>
+            <groupId>cz.jirutka.rsql</groupId>
+            <artifactId>rsql-parser</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.26</version>
+        </dependency>
+
+
+    </dependencies>
+
+    <dependencyManagement>
+
+
+        <dependencies>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-core</artifactId>
+                <version>${mybatis.plus.v}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.v}</version>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>io.github.yanfeiwuji</groupId>
+                <artifactId>rsql-common</artifactId>
+                <version>${yfwj.rsql.v}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
