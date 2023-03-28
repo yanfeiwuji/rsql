@@ -18,8 +18,8 @@ public abstract class HandlerComparisonNode<P> {
         initHandlerFieldsMap(CACHE);
     }
 
-    public P handler(ComparisonNode node, P param) {
-        if (nodeCanQuery(node, param)) {
+    public P handler(ComparisonNode node, P param, Class<?> eClass) {
+        if (nodeCanQuery(node, param, eClass)) {
             return CACHE
                     .get(ComparisonOperatorProxy.asEnum(node.getOperator()))
                     .handler(node, param);
@@ -29,7 +29,7 @@ public abstract class HandlerComparisonNode<P> {
 
     }
 
-    public boolean nodeCanQuery(ComparisonNode node, P param) {
+    public boolean nodeCanQuery(ComparisonNode node, P param, Class<?> entityClass) {
         return true;
     }
 

@@ -17,10 +17,14 @@
     <modules>
         <module>rsql-common</module>
         <module>rsql-mybatis-plus</module>
+        <module>rsql-spring-data-jpa</module>
+        <module>rsql-spring-data-r2dbc</module>
+        <module>rsql-spring-data-r2dbc-start</module>
+        <module>rsql-spring-mybatis-plus-start</module>
     </modules>
     <properties>
         <java.version>17</java.version>
-        <mybatis.plus.v>3.5.2</mybatis.plus.v>
+        <mybatis.plus.v>3.5.3.1</mybatis.plus.v>
         <spring.boot.v>3.0.4</spring.boot.v>
         <yfwj.rsql.v>0.0.1-SNAPSHOT</yfwj.rsql.v>
     </properties>
@@ -60,6 +64,16 @@
             <dependency>
                 <groupId>io.github.yanfeiwuji</groupId>
                 <artifactId>rsql-common</artifactId>
+                <version>${yfwj.rsql.v}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.yanfeiwuji</groupId>
+                <artifactId>rsql-mybatis-plus</artifactId>
+                <version>${yfwj.rsql.v}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.yanfeiwuji</groupId>
+                <artifactId>rsql-spring-data-r2dbc</artifactId>
                 <version>${yfwj.rsql.v}</version>
             </dependency>
         </dependencies>

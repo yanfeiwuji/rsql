@@ -2,16 +2,12 @@ package io.github.yanfeiwuji.rsql.mp;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.TableFieldInfo;
-import com.baomidou.mybatisplus.core.metadata.TableInfo;
 import com.baomidou.mybatisplus.core.metadata.TableInfoHelper;
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import cz.jirutka.rsql.parser.ast.ComparisonNode;
-import cz.jirutka.rsql.parser.ast.Node;
 import io.github.yanfeiwuji.rsql.common.*;
 
 import java.lang.reflect.Field;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * @author yanfeiwuji
@@ -19,7 +15,6 @@ import java.util.Objects;
  */
 
 public class MpHandlerComparisonNode extends HandlerComparisonNode<QueryWrapper> {
-
 
     @Override
     protected void initHandlerFieldsMap(Map<ComparisonOperatorProxy, HandlerField<QueryWrapper>> map) {
@@ -86,8 +81,13 @@ public class MpHandlerComparisonNode extends HandlerComparisonNode<QueryWrapper>
     }
 
     @Override
-    public boolean nodeCanQuery(ComparisonNode node, QueryWrapper param) {
-        return TableInfoHelper.getTableInfo(param.getClass()).getFieldList()
+    public boolean nodeCanQuery(ComparisonNode node, QueryWrapper param, Class<?> eClass) {
+        final String keyColumn = TableInfoHelper.getTableInfo(eClass).getKeyColumn();
+        if (node.getSelector().equals(keyColumn)) {
+            return true;
+        }
+        return TableInfoHelper.getTableInfo(eClass)
+                .getFieldList()
                 .stream()
                 .map(TableFieldInfo::getField)
                 .map(Field::getName)
